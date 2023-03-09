@@ -1,4 +1,6 @@
 .Content{
-    width: calc(100% - 25px);
+    width: calc((100% - 25px) - 30%);
     padding: 25px;
+    padding-left: 15%;
+    padding-right: 15%;
 }

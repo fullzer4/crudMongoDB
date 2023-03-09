@@ -15,3 +15,26 @@
   justify-content: center;
   align-items: center;
 }
+
+.Cover{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100svw;
+  height: 100svh;
+  background-color: rgba(0, 0, 0, 0.315);
+  .Popup{
+    margin-top: 2%;
+    aspect-ratio: 2.0;
+    width: 45em;
+    background-color: aliceblue;
+  }
+}
+
+.off{
+  display: none;
+}

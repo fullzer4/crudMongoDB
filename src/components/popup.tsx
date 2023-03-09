@@ -1,16 +1,18 @@
-import Styles from "@/scss/Popup.module.scss"
+import { PopupContext } from "@/context/popup";
+import { useState, useContext } from "react"
 
-const popup = ():JSX.Element => {
 
-    const adicionar = () => {
+const Popup = (): JSX.Element => {
+    
+    const {changePopState, cover} = useContext(PopupContext)
 
-    }
-
-    return(
-        <div className={Styles.cover}>
-            <button onClick={() => adicionar()}> add </button>
+    return (
+      <div className={cover}>
+        <div className="Popup">
+            <button onClick={() => changePopState()}>cancelar</button>
         </div>
-    )
-}
-
-export default popup;
+      </div>
+    );
+  };
+  
+  export default Popup;
