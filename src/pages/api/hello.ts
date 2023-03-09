@@ -1,13 +1,15 @@
-// Next.js API route support: https://nextjs.org/docs/api-routes/introduction
-import type { NextApiRequest, NextApiResponse } from 'next'
+import mongoose from "mongoose";
+import dotenv from "dotenv"
 
-type Data = {
-  name: string
-}
+dotenv.config()
 
-export default function handler(
-  req: NextApiRequest,
-  res: NextApiResponse<Data>
-) {
-  res.status(200).json({ name: 'John Doe' })
+const userDb = process.env.dbUser
+const senhaDb = process.env.dbSenha
+
+const uri = `mongodb+srv://${userDb}:${senhaDb}@lojinha.smpfkqn.mongodb.net/?retryWrites=true&w=majority`
+
+export async function DbInicializer() {
+    mongoose.connect(uri).then(() => {
+        console.log("Conectou");
+    }).catch((err) => {return err})
 }

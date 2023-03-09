@@ -1,18 +1,16 @@
-import Styles from "@/scss/Popup.module.scss"
+import Styles from "@/scss/Navbar.module.scss"
 import Link from "next/link";
 
 const navbar = ():JSX.Element => {
 
     const deslogar = () => {
-
+        alert("funcionando")
     }
 
     return(
-        <div className={Styles.cover}>
-            <div className={Styles.popup}>
-                <Link href="/"/>
-                <button onClick={() => deslogar()}> Sair </button>
-            </div>
+        <div className={Styles.navbar}>
+            <Link href="/" className={Styles.Dashboard}>Dashboard</Link>
+            <button className={Styles.Sair} onClick={() => deslogar()}> Sair </button>
         </div>
     )
 }

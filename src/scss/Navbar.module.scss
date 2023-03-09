@@ -1,0 +1,21 @@
+.navbar{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    background-color: #343a40;
+    width: calc(100% - 25px);
+    height: 3.5em;
+    padding-left: 25px;
+    gap: 25px;
+    .Dashboard{
+        font-size: 1.25em;
+        cursor: pointer;
+        color: #fff;
+    }
+    .Sair{
+        font-size: 1em;
+        background-color: #ffffff00;
+        cursor: pointer;
+        color: #fff;
+    }
+}

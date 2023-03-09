@@ -2,13 +2,13 @@ import Styles from "@/scss/Popup.module.scss"
 
 const popup = ():JSX.Element => {
 
+    const adicionar = () => {
 
+    }
 
     return(
         <div className={Styles.cover}>
-            <div className={Styles.popup}>
-
-            </div>
+            <button onClick={() => adicionar()}> add </button>
         </div>
     )
 }

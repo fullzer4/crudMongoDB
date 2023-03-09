@@ -1,0 +1,51 @@
+.loginOut{
+    min-width: 100vw;
+    min-height: 100svh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.form{
+    display: flex;
+    flex-direction: column;
+    width: calc(100% - 20px);
+    padding: 10px;
+    max-width: 300px;
+}
+
+.title{
+    font-size: 23px;
+    margin: 5px 0;
+}
+
+.subtitle{
+    font-size: 12px;
+    font-weight: 100;
+    margin: 5px 0;
+}
+
+.inp{
+    padding: 4px 6px;
+    border: 1px solid #ccc;
+    margin-bottom: 5px;
+    border-radius: 3px;
+    font-size: 12px;
+    transition: all .3s;
+}
+
+.btForm{
+    width: fit-content;
+    padding: 5px 10px;
+    border-radius: 3px;
+    background: #027bff;
+    color: white;
+    margin: 5px 0;
+    font-weight: 100;
+    font-size: 13px;
+    cursor: pointer;
+}
+
+.inp:focus{
+    box-shadow: 0 0 0 2px #cde1ff;
+}
