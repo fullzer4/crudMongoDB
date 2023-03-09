@@ -3,8 +3,6 @@ import Styles from "@/scss/Login.module.scss";
 
 export default function Login(){
 
-    
-
     class Login {
         #email;
         #pass;
