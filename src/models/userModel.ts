@@ -8,6 +8,12 @@ const userSchema = new Schema({
         unique: true,
     },
 
+    password: {
+        type: String,
+        required: true,
+        unique: true,
+    },
+
 })
 
 const User = models.User || model('User', userSchema)
