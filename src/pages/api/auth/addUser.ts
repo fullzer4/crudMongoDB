@@ -1,5 +1,5 @@
 import connect from "@/utils/mongo"
-import User from "@/models/userModel";
+import User from "@/models/userSchema";
 import Data from "@/models/dataModel";
 import bcrypt from 'bcrypt';
 

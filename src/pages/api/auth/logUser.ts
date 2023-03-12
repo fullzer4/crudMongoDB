@@ -1,6 +1,6 @@
 import { AuthContext } from './../../../context/auth';
 import connect from "@/utils/mongo"
-import User from "@/models/userModel";
+import User from "@/models/userSchema";
 import bcrypt from 'bcrypt';
 import jwt from 'jsonwebtoken';
 
