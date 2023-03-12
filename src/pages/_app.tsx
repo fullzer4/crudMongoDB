@@ -1,7 +1,6 @@
 import type { AppProps } from 'next/app'
 import "@/scss/globals.scss";
 import { PopupProvider } from '@/context/popup';
-import { AuthProvider } from '@/context/auth';
 import { useRouter } from 'next/router';
 import { useEffect } from 'react';
 
@@ -24,11 +23,9 @@ export default function App({ Component, pageProps }: AppProps) {
 
   return (
     <>
-      <AuthProvider>
-        <PopupProvider>
-          <Component {...pageProps} />
-        </PopupProvider>
-      </AuthProvider>
+      <PopupProvider>
+        <Component {...pageProps} />
+      </PopupProvider>
     </>
   )
 }
