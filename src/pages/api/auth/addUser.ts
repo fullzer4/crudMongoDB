@@ -11,15 +11,15 @@ export default async function addUser(req:any, res:any){
     const hashedPassword = await bcrypt.hash(password, 10);
 
     const user = await User.create({email, password: hashedPassword})
+    
+    let userId = user._id.toString()!
+    let code: Array<number> = []
+    let nome: Array<string> = []
+    let quantidade: Array<number> = []
+    let valor: Array<number> = []
+    let dataCasdatro: Array<number> = []
 
-    const userId = user._id.toString()!
-    const code: Array<number> = []
-    const nome: Array<string> = []
-    const quantidade: Array<number> = []
-    const valor: Array<number> = []
-    const dataCasdatro: Array<number> = []
-
-    const data = await Data.create({userId, code, nome, quantidade, valor, dataCasdatro})
+    let data = await Data.create({userId, code, nome, quantidade, valor, dataCasdatro})
 
     res.json({user})
 }

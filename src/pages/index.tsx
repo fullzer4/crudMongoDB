@@ -1,24 +1,27 @@
 import Styles from "@/scss/Login.module.scss";
 import { useRef } from "react";
 import User from "@/models/userClass";
+import Link from "next/link";
+import { useRouter } from "next/router";
 
 export default function Login(){
 
-  const emailRef = useRef<HTMLInputElement>(null);
-  const passwordRef = useRef<HTMLInputElement>(null);
+  let emailRef = useRef<HTMLInputElement>(null);
+  let passwordRef = useRef<HTMLInputElement>(null);
+
+  const router = useRouter();
 
   const handleLogin = async (e:any) => {
     e.preventDefault();
   
-    const email = emailRef.current?.value;
-    const password = passwordRef.current?.value;
-
-    console.log(email);
-    console.log(password);
+    let email = emailRef.current?.value;
+    let password = passwordRef.current?.value;
   
-    const user = new User(email!, password!)
+    let user = new User(email!, password!)
 
-    await user.create()
+    const token = await user.login();
+
+    //router.push('/dashboard');
   };
   
   return (
@@ -31,6 +34,7 @@ export default function Login(){
         <input id="password" className={Styles.inp} type="password" placeholder="123456" ref={passwordRef} />
         <button className={Styles.btForm} onClick={(e) => handleLogin(e)}>Entrar</button>
       </form>
+      <Link href="/signup" className={Styles.btForm}>Cadastrar</Link>
     </div>
   );
 }

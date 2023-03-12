@@ -3,8 +3,7 @@ import { Schema, model, models } from "mongoose";
 const dataSchema = new Schema({
 
     userId: { 
-        type: Schema.Types.ObjectId, 
-        ref: 'User',
+        type: Schema.Types.ObjectId,
         required: true,
     },
     code: {
