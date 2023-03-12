@@ -21,5 +21,5 @@ export default async function addUser(req:any, res:any){
 
     const data = await Data.create({userId, code, nome, quantidade, valor, dataCasdatro})
 
-    res.json({user},{data})
+    res.json({user})
 }
