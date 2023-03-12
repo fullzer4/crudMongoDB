@@ -2,16 +2,9 @@ import connect from "@/utils/mongo"
 import User from "@/models/userSchema";
 import Data from "@/models/dataModel";
 import bcrypt from 'bcrypt';
-import cors from 'cors';
 
-const corsMiddleware = cors({
-  origin: 'https://crudbrunomernstack.netlify.app',
-  optionsSuccessStatus: 200,
-});
 
-export default async function addUser(req:any, res:any, next:any){
-
-    await corsMiddleware(req!, res!, next!);
+export default async function addUser(req:any, res:any){
 
     const { email, password } = req.body
 

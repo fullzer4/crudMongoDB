@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-class User {
+class UserC {
     protected email: string;
     protected password: string;
   
@@ -19,7 +19,7 @@ class User {
         } catch (err) { console.error('Erro ao criar usuário:', err)}
     }
 
-    public async login(){
+    public async login(){  
         try {
             await axios.post(`${window.location.origin}/api/auth/logUser`, {
               email: this.email,
@@ -32,6 +32,12 @@ class User {
     public logout(){
         
     }
+
+    public setToken(token: string) {
+    }
+
+    public getToken() {
+    }
 }
   
-export default User;
+export default UserC;
