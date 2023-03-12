@@ -24,6 +24,7 @@ export default function Login(){
     const token = user.token
 
     if(token.length > 1){
+      await localStorage.setItem('token', token);
       router.push('/dashboard');
     }
   };

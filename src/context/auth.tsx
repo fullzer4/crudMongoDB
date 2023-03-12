@@ -4,7 +4,6 @@ export const AuthContext = createContext<any>(()=>{})
 
 export const AuthProvider = ({ children }: any) => {
 
-
     return(
         <AuthContext.Provider value={{
  
