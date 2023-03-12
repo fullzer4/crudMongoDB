@@ -2,8 +2,17 @@ import connect from "@/utils/mongo"
 import User from "@/models/userSchema";
 import Data from "@/models/dataModel";
 import bcrypt from 'bcrypt';
+import cors from 'cors';
 
-export default async function addUser(req:any, res:any){
+const corsMiddleware = cors({
+  origin: 'https://crudbrunomernstack.netlify.app',
+  optionsSuccessStatus: 200,
+});
+
+export default async function addUser(req:any, res:any, next:any){
+
+    await corsMiddleware(req!, res!, next!);
+
     const { email, password } = req.body
 
     await connect()
@@ -21,5 +30,5 @@ export default async function addUser(req:any, res:any){
 
     let data = await Data.create({userId, code, nome, quantidade, valor, dataCasdatro})
 
-    res.json({user})
+    res.status(201).json({user})
 }

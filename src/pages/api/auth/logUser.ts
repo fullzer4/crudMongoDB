@@ -2,8 +2,17 @@ import connect from "@/utils/mongo"
 import User from "@/models/userSchema";
 import bcrypt from 'bcrypt';
 import jwt from 'jsonwebtoken';
+import cors from 'cors';
 
-export default async function login(req:any, res:any){
+const corsMiddleware = cors({
+  origin: 'https://crudbrunomernstack.netlify.app',
+  optionsSuccessStatus: 200,
+});
+
+export default async function login(req:any, res:any, next:any){
+
+    await corsMiddleware(req!, res!, next!);
+
     const { email, password } = req.body
 
     const JWT = String(process.env.JWT_SECRET)
