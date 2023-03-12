@@ -11,7 +11,7 @@ class User {
 
     public async create(){
         try {
-            await axios.post('http://localhost:3000/api/auth/addUser', {
+            await axios.post(`${window.location.origin}/api/auth/addUser`, {
               email: this.email,
               password: this.password,
             });
@@ -21,7 +21,7 @@ class User {
 
     public async login(){
         try {
-            await axios.post('http://localhost:3000/api/auth/logUser', {
+            await axios.post(`${window.location.origin}/api/auth/logUser`, {
               email: this.email,
               password: this.password,
             });
