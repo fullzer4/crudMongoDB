@@ -1,6 +1,6 @@
 import Styles from "@/scss/Login.module.scss";
 import { useRef } from "react";
-import User from "@/models/userClass";
+import UserC from "@/models/userClass";
 import Link from "next/link";
 import { useRouter } from "next/router";
 
@@ -17,11 +17,15 @@ export default function Login(){
     let email = emailRef.current?.value;
     let password = passwordRef.current?.value;
   
-    let user = new User(email!, password!)
+    let user = new UserC(email!, password!)
 
-    const token = await user.login();
+    await user.login();
+    
+    const token = user.token
 
-    //router.push('/dashboard');
+    if(token.length > 1){
+      router.push('/dashboard');
+    }
   };
   
   return (

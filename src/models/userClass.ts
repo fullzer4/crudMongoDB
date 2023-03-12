@@ -3,6 +3,7 @@ import axios from 'axios';
 class UserC {
     protected email: string;
     protected password: string;
+    public token: string = ""
   
     constructor(email: string, password: string) {
         this.email = email;
@@ -21,10 +22,11 @@ class UserC {
 
     public async login(){  
         try {
-            await axios.post(`${window.location.origin}/api/auth/logUser`, {
+            const response = await axios.post(`${window.location.origin}/api/auth/logUser`, {
               email: this.email,
               password: this.password,
             });
+            this.token = response.data.token
             console.log('Usuário logado com sucesso!');
         } catch (err) { console.error('Erro ao logar usuário:', err)}
     }
@@ -33,11 +35,6 @@ class UserC {
         
     }
 
-    public setToken(token: string) {
-    }
-
-    public getToken() {
-    }
 }
   
 export default UserC;
