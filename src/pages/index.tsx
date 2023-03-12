@@ -12,6 +12,9 @@ export default function Login(){
   
     const email = emailRef.current?.value;
     const password = passwordRef.current?.value;
+
+    console.log(email);
+    console.log(password);
   
     const user = new User(email!, password!)
 
