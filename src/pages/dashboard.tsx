@@ -15,7 +15,7 @@ export default function Login(){
             <Navbar/>
             <Popup/>
             <div className={Styles.Content}>
-                <button onClick={() => changePopState()}> add </button>
+                <button className={Styles.bt} onClick={() => changePopState()}> add </button>
                 <Table/>
             </div>
         </>

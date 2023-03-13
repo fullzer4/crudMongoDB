@@ -82,10 +82,10 @@ export default function Table() {
                             <td>{item.value}</td>
                             <td>{item.createDate.toLocaleDateString()}</td>
                             <td>
-                                <button onClick={() => handleEdit(index)}>Editar</button>
+                                <button className={Styles.bt} onClick={() => handleEdit(index)}>Editar</button>
                             </td>
                             <td>
-                                <button onClick={() => handleDelete(index)}>Excluir</button>
+                                <button className={Styles.bt} onClick={() => handleDelete(index)}>Excluir</button>
                             </td>
                         </tr>
                     ))}
