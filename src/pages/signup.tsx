@@ -32,9 +32,9 @@ export default function Singup(){
         <input id="email" className={Styles.inp} type="email" placeholder="exemplo@gmail.com" ref={emailRef} />
         <h3 className={Styles.subtitle}>Senha</h3>
         <input id="password" className={Styles.inp} type="password" placeholder="123456" ref={passwordRef} />
-        <button className={Styles.btForm} onClick={(e) => handleLogin(e)}>Entrar</button>
+        <button className={Styles.btForm} onClick={(e) => handleLogin(e)}>Criar</button>
       </form>
-      <Link href="/signup" className={Styles.btForm}>Logar</Link>
+      <Link href="/" className={Styles.btForm}>Logar</Link>
     </div>
   );
 }

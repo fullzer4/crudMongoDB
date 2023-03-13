@@ -14,7 +14,6 @@ export default function App({ Component, pageProps }: AppProps) {
 
     if (router.pathname === '/dashboard') {
       if (!token || token.length <= 4) {
-        // Redireciona para a página inicial se não tiver um token válido
         router.push('/');
       }
     }
