@@ -8,7 +8,7 @@ export default function App({ Component, pageProps }: AppProps) {
   const router = useRouter();
 
   useEffect(() => {
-    // Verifica se o token está presente no localStorage
+    
     console.log("verificando")
     const token = localStorage.getItem('token');
 
