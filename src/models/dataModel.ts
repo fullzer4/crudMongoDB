@@ -30,6 +30,6 @@ const dataSchema = new Schema({
 
 })
 
-const Data = models.Data || model('Data', dataSchema)
+const TableData = models.TableData || model('TableData', dataSchema)
 
-export default Data 
+export default TableData 

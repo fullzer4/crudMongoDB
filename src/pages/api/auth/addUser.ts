@@ -1,6 +1,6 @@
 import connect from "@/utils/mongo"
 import User from "@/models/userSchema";
-import Data from "@/models/dataModel";
+import TableData from "@/models/dataModel";
 import bcrypt from 'bcrypt';
 
 
@@ -21,7 +21,7 @@ export default async function addUser(req:any, res:any){
     let valor: Array<number> = []
     let dataCasdatro: Array<number> = []
 
-    let data = await Data.create({userId, code, nome, quantidade, valor, dataCasdatro})
+    let data = await TableData.create({userId, code, nome, quantidade, valor, dataCasdatro})
 
-    res.status(201).json({user})
+    res.status(201).json({user, data})
 }

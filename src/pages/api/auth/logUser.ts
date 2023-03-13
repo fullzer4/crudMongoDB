@@ -2,7 +2,6 @@ import connect from "@/utils/mongo"
 import User from "@/models/userSchema";
 import bcrypt from 'bcrypt';
 import jwt from 'jsonwebtoken';
-import UserC from "@/models/userClass";
 
 export default async function login(req:any, res:any){
     
@@ -16,7 +15,7 @@ export default async function login(req:any, res:any){
 
     if (user && bcrypt.compareSync(password, user.password)) {
         const token = jwt.sign({ userId: user._id }, JWT, { expiresIn: '1h' });
-        res.json({ token });
+        res.json({ token, user });
     } else {
         res.status(401).json({ error: 'Credenciais inválidas' });
     }
