@@ -33,10 +33,6 @@ class UserC {
         } catch (err) { console.error('Erro ao logar usuário:', err)}
     }
 
-    public logout(){
-        
-    }
-
 }
   
 export default UserC;
