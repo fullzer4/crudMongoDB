@@ -1,9 +1,9 @@
 
-import Styles from "@/scss/Dash.module.scss";
-import Navbar from "@/components/navbar";
-import Table from "@/components/table";
-import Popup from "@/components/popup";
-import { PopupContext } from "@/context/popup";
+import Styles from "../scss/Dash.module.scss";
+import Navbar from "../components/navbar";
+import Table from "../components/table";
+import Popup from "../components/popup";
+import { PopupContext } from "../context/popup";
 import { useContext, useEffect } from "react";
 import { useRouter } from "next/router";
 

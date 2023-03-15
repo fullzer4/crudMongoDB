@@ -1,6 +1,6 @@
 import type { AppProps } from 'next/app'
-import "@/scss/globals.scss";
-import { PopupProvider } from '@/context/popup';
+import "../scss/globals.scss";
+import { PopupProvider } from '../context/popup';
 import { useRouter } from 'next/router';
 import { useEffect } from 'react';
 

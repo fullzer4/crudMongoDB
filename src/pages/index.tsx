@@ -1,6 +1,6 @@
-import Styles from "@/scss/Login.module.scss";
+import Styles from "../scss/Login.module.scss";
 import { useRef } from "react";
-import UserC from "@/models/userClass";
+import UserC from "../models/userClass";
 import Link from "next/link";
 import { useRouter } from "next/router";
 

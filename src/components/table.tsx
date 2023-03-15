@@ -1,6 +1,6 @@
 import { useState, useEffect, useContext } from "react";
-import Styles from "@/scss/Table.module.scss";
-import { PopupContext } from "@/context/popup";
+import Styles from "../scss/Table.module.scss";
+import { PopupContext } from "../context/popup";
 
 type Item = {
   codigo: number;

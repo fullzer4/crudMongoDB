@@ -1,5 +1,5 @@
-import connect from "@/utils/mongo"
-import User from "@/models/userSchema";
+import connect from "../../../utils/mongo";
+import User from "../../../models/userSchema";
 import bcrypt from 'bcrypt';
 import jwt from 'jsonwebtoken';
 

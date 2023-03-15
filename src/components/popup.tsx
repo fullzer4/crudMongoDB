@@ -1,4 +1,4 @@
-import { PopupContext } from "@/context/popup";
+import { PopupContext } from "../context/popup";
 import { useContext, useState } from "react";
 
 const Popup = (): JSX.Element => {
