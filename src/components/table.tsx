@@ -27,8 +27,8 @@ export default function Table() {
     changeEditState()
   };
 
-  const handleDelete = (index: number) => {
-    removeItem(index);
+  const handleDelete = (codigo: number) => {
+    removeItem(codigo);
   };
 
   return (
@@ -64,7 +64,7 @@ export default function Table() {
               <td>
                 <button
                   className={Styles.bt}
-                  onClick={() => handleDelete(index)}
+                  onClick={() => handleDelete(item.codigo)}
                 >
                   Excluir
                 </button>

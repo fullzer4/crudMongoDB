@@ -33,8 +33,10 @@ export const PopupProvider = ({ children }: any) => {
     };
 
     const removeItem = (codigo:any) => {
-        setData(data.filter(item => item.codigo !== codigo));
-    };
+        const codigoInt = parseInt(codigo);
+        console.log(codigoInt);
+        setData(data.filter(item => item.codigo !== codigoInt));
+      };
 
     const editItem = (codigo:any, newValues:any) => {
         setData(data.map(item => {

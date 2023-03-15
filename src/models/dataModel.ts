@@ -1,35 +1,36 @@
-import { Schema, model, models } from "mongoose";
+import { Schema, model } from "mongoose";
 
-const dataSchema = new Schema({
+const tableDataSchema = new Schema({
+  userId: {
+    type: Schema.Types.ObjectId,
+    required: true,
+  },
+  data: [
+    {
+      codigo: {
+        type: Number,
+        required: true,
+      },
+      nome: {
+        type: String,
+        required: true,
+      },
+      quantidade: {
+        type: Number,
+        required: true,
+      },
+      value: {
+        type: Number,
+        required: true,
+      },
+      createDate: {
+        type: Date,
+        required: true,
+      },
+    },
+  ],
+});
 
-    userId: { 
-        type: Schema.Types.ObjectId,
-        required: true,
-    },
-    code: {
-        type: Array,
-        required: true,
-        unique: true,
-    },
-    name: {
-        type: Array,
-        required: true,
-    },
-    quantidade: {
-        type: Array,
-        required: true,
-    },
-    value: {
-        type: Array,
-        required: true,
-    },
-    dataCasdatro: {
-        type: Array,
-        required: true,
-    },
+const TableData = model("TableData", tableDataSchema);
 
-})
-
-const TableData = models.TableData || model('TableData', dataSchema)
-
-export default TableData 
+export default TableData;
