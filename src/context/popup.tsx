@@ -8,8 +8,6 @@ export const PopupProvider = ({ children }: any) => {
     const [edit, setEdit ] = useState("Edit off")
     const [data, setData] = useState([{"codigo":1,"nome":"Item 1","quantidade":10,"value":100,"createDate":"2023-03-13T07:06:29.253Z"},{"codigo":2,"nome":"Item 2","quantidade":20,"value":200,"createDate":"2023-03-13T07:06:29.253Z"},{"codigo":3,"nome":"Item 3","quantidade":30,"value":300,"createDate":"2023-03-13T07:06:29.253Z"},{"codigo":4,"nome":"Item 4","quantidade":40,"value":400,"createDate":"2023-03-13T07:06:29.253Z"},{"codigo":5,"nome":"Item 5","quantidade":50,"value":500,"createDate":"2023-03-13T07:06:29.253Z"}])
 
-
-
     const changePopState = () => {
         if(cover === "Cover"){
             setCover("Cover off")
@@ -17,6 +15,16 @@ export const PopupProvider = ({ children }: any) => {
             
         }else{
             setCover("Cover")
+        }
+    }
+
+    const changeEditState = () => {
+        if(edit === "Edit"){
+            setEdit("Edit off")
+            console.log(data);
+            
+        }else{
+            setCover("Edit")
         }
     }
 
@@ -47,7 +55,8 @@ export const PopupProvider = ({ children }: any) => {
             removeItem,
             editItem,
             setEdit,
-            edit
+            edit,
+            changeEditState
             }}> 
             {children}
         </PopupContext.Provider>

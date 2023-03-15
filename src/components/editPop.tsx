@@ -2,7 +2,7 @@ import { PopupContext } from "@/context/popup";
 import { useContext, useState } from "react";
 
 const Popup = (): JSX.Element => {
-  const { edit, cover, addItem } = useContext(PopupContext); // importando a função addItem
+  const { edit, changeEditState, addItem } = useContext(PopupContext); // importando a função addItem
   const [code, setCode] = useState("");
   const [product, setProduct] = useState("");
   const [quantity, setQuantity] = useState("");
@@ -76,7 +76,7 @@ const Popup = (): JSX.Element => {
           </div>
           <div>
             <button type="submit">Adicionar</button>
-            <button onClick={() => changePopState()}>Cancelar</button>
+            <button onClick={() => changeEditState()}>Cancelar</button>
           </div>
         </form>
       </div>

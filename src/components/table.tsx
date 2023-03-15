@@ -13,7 +13,7 @@ type Item = {
 export default function Table() {
   const [items, setItems] = useState<Item[]>([]);
 
-  const { data, deleteItem } = useContext(PopupContext);
+  const { data, removeItem, changeEditState } = useContext(PopupContext);
 
   useEffect(() => {
     const parsedData = data.map((item: any) => ({
@@ -24,11 +24,11 @@ export default function Table() {
   }, [data]);
 
   const handleEdit = (index: number) => {
-    
+    changeEditState()
   };
 
   const handleDelete = (index: number) => {
-    deleteItem(index);
+    removeItem(index);
   };
 
   return (
