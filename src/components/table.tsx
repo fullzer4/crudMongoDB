@@ -1,36 +1,48 @@
 import { useState, useEffect, useContext } from "react";
 import Styles from "../scss/Table.module.scss";
 import { PopupContext } from "../context/popup";
+import Data from "../models/dataClass";
 
 type Item = {
   codigo: number;
   nome: string;
   quantidade: number;
   value: number;
-  createDate: Date; 
+  createDate: string;
 };
+
+const data = new Data();
 
 export default function Table() {
   const [items, setItems] = useState<Item[]>([]);
 
-  const { data, removeItem, changeEditState, getData } = useContext(PopupContext);
+  const { changeEditState } = useContext(PopupContext);
 
   useEffect(() => {
-    const parsedData = data.map((item: any) => ({
-      ...item,
-      createDate: new Date(item.createDate),
-    }));
-    setItems(parsedData);
-  }, [data]);
+    const id = localStorage.getItem("id");
+    data.getData(id).then(() => {
+      console.log(data.data);
+      setItems(data.data);
+    });
+  }, []);
 
-  const handleEdit = (index: number) => {
-    changeEditState()
+  const handleDelete = async (index: number) => {
+    const id = localStorage.getItem("id");
+    console.log(index);
+    await data.deleteData(id, index);
+    await data.getData(id).then(() => {
+      console.log(data.data);
+      setItems(data.data);
+    });
   };
 
-  const handleDelete = (codigo: number) => {
-    const id = localStorage.getItem("id")
-    getData(id)
-    removeItem(codigo);
+  const handleEdit = async (position: number) => {
+    changeEditState();
+    // Chama o método editData da classe Data
+    const id = localStorage.getItem("id");
+    //const newData = /* obter os novos dados do item editado */;
+    //await data.editData(id, position, newData);
+    setItems(data.data);
   };
 
   return (
@@ -48,13 +60,13 @@ export default function Table() {
           </tr>
         </thead>
         <tbody className={Styles.lines}>
-          {items.map((item, index) => (
+          {items.length > 0 && items.map((item, index) => (
             <tr key={item.codigo}>
               <td>{item.codigo}</td>
               <td>{item.nome}</td>
               <td>{item.quantidade}</td>
               <td>{item.value}</td>
-              <td>{item.createDate.toLocaleDateString()}</td>
+              <td>{item.createDate.split('T')[0]}</td>
               <td>
                 <button
                   className={Styles.bt}
@@ -66,7 +78,7 @@ export default function Table() {
               <td>
                 <button
                   className={Styles.bt}
-                  onClick={() => handleDelete(item.codigo)}
+                  onClick={() => handleDelete(index)}
                 >
                   Excluir
                 </button>

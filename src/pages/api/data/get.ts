@@ -1,5 +1,5 @@
 import connect from "../../../utils/mongo";
-import TableData from "../../../models/dataModel";
+import TableData from "../../../models/dataSchema";
 
 export default async function getUserTableData(req:any, res:any) {
   const { id } = req.body;
@@ -11,8 +11,8 @@ export default async function getUserTableData(req:any, res:any) {
   const tableData = await TableData.findOne({ userId });
 
   if (!tableData) {
-    return res.status(404).json({ message: "Table data not found" });
+    return res.json({ message: "Table data not found" });
   }
 
-  res.status(200).json(tableData);
+  res.status(200).json(tableData.data);
 }

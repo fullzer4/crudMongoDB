@@ -22,9 +22,11 @@ export default function Login(){
     await user.login();
     
     const token = user.token
+    const id = user.id
 
     if(token.length > 1){
       await localStorage.setItem('token', token);
+      await localStorage.setItem('id', id);
       router.push('/dashboard');
     }
   };

@@ -1,5 +1,5 @@
 import connect from "../../../utils/mongo";
-import TableData from "../../../models/dataModel";
+import TableData from "../../../models/dataSchema";
 
 export default async function editTableData(req:any, res:any) {
   const { id, position, newData } = req.body;

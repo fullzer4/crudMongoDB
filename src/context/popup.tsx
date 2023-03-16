@@ -7,7 +7,7 @@ export const PopupProvider = ({ children }: any) => {
 
     const [cover, setCover] = useState("Cover off")
     const [edit, setEdit ] = useState("Edit off")
-    const [data, setData] = useState([{"codigo":1,"nome":"Item 1","quantidade":10,"value":100,"createDate":"2023-03-13T07:06:29.253Z"},{"codigo":2,"nome":"Item 2","quantidade":20,"value":200,"createDate":"2023-03-13T07:06:29.253Z"},{"codigo":3,"nome":"Item 3","quantidade":30,"value":300,"createDate":"2023-03-13T07:06:29.253Z"},{"codigo":4,"nome":"Item 4","quantidade":40,"value":400,"createDate":"2023-03-13T07:06:29.253Z"},{"codigo":5,"nome":"Item 5","quantidade":50,"value":500,"createDate":"2023-03-13T07:06:29.253Z"}])
+    const [data, setData] = useState([])
 
     const changePopState = () => {
         if(cover === "Cover"){
@@ -30,42 +30,66 @@ export const PopupProvider = ({ children }: any) => {
     }
 
     const getData = async (userId:any) => {
-        const response = await axios.get(`http://localhost:3000/api/tabledata/${userId}`);
-        return response.data;
+        try {
+            const response = await axios.post(`${window.location.origin}/api/data/get`, {
+              id: userId
+            });
+            setData(response.data); 
+        } catch (err) { 
+            console.error(err);
+        }
     }
-
-    const addItem = (newItem:any) => {
-        setData([...data, newItem]);
-    };
-
-    const removeItem = (codigo:any) => {
-        const codigoInt = parseInt(codigo);
-        console.log(codigoInt);
-        setData(data.filter(item => item.codigo !== codigoInt));
-      };
-
-    const editItem = (codigo:any, newValues:any) => {
-        setData(data.map(item => {
-            if (item.codigo === codigo) {
-                return { ...item, ...newValues };
-            } else {
-                return item;
-            }
-        }));
-    };
+    
+    const addData = async (userId:any, item:any) => {
+        try {
+            const response = await axios.post(`${window.location.origin}/api/data/add`, {
+              id: userId,
+              item: item
+            });
+            setData(response.data);
+        } catch (err) { 
+            console.error(err);
+        }
+    }
+    
+    const deleteData = async (userId:any, index:any) => {
+        try {
+            const response = await axios.post(`${window.location.origin}/api/data/delete`, {
+              id: userId,
+              index: index
+            });
+            console.log(response.data);
+            setData(response.data);
+        } catch (err) { 
+            console.error(err);
+        }
+    }
+    
+    const editData = async (userId:any, position:any, newData:any) => {
+        try {
+            const response = await axios.post(`${window.location.origin}/api/data/edit`, {
+              id: userId,
+              position: position,
+              newData: newData
+            });
+            setData(response.data); // atualiza o estado data com os dados retornados do backend após a edição do item
+        } catch (err) { 
+            console.error(err);
+        }
+    }
 
     return(
         <PopupContext.Provider value={{
             changePopState,
             cover,
             data,
-            addItem,
-            removeItem,
-            editItem,
             setEdit,
             edit,
             changeEditState,
-            getData
+            getData,
+            addData,
+            deleteData,
+            editData
             }}> 
             {children}
         </PopupContext.Provider>

@@ -1,6 +1,6 @@
 import connect from "../../../utils/mongo";
 import User from "../../../models/userSchema";
-import TableData from "../../../models/dataModel";
+import TableData from "../../../models/dataSchema";
 import bcrypt from 'bcrypt';
 
 
