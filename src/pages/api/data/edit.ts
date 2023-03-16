@@ -1,12 +1,12 @@
 import connect from "../../../utils/mongo";
 import TableData from "../../../models/dataSchema";
 
-export default async function editTableData(req:any, res:any) {
+export default async function editTableData(req: any, res: any) {
   const { id, position, newData } = req.body;
 
   await connect();
 
-  const userId = id
+  const userId = id;
 
   const tableData = await TableData.findOne({ userId });
 
@@ -17,22 +17,18 @@ export default async function editTableData(req:any, res:any) {
   const data = tableData.data;
   const objectToUpdate = data[position];
 
-  console.log(objectToUpdate);
-
   if (!objectToUpdate) {
     return res.status(404).json({ message: "Object not found" });
   }
 
-  const updatedData = [...data];
-    updatedData[position] = {
-      ...objectToUpdate,
-      ...newData
-  };
+  const updatedObject = Object.assign(objectToUpdate, newData);
+
+  data.splice(position, 1, updatedObject);
 
   await TableData.findOneAndUpdate(
     { userId },
-    { data: updatedData }
+    { data }
   );
 
-  res.status(200).json({ message: "Object updated successfully", objectToUpdate });
+  res.status(200).json({ message: "Object updated successfully" });
 }

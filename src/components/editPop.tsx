@@ -26,7 +26,7 @@ const Popup = (): JSX.Element => {
     
     const position = 0
 
-    data.editData(id, position,newItem)
+    data.editData(id, position, newItem)
 
     setCode("");
     setProduct("");
