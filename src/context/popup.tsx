@@ -1,3 +1,4 @@
+import axios from "axios";
 import { createContext, useState } from "react";
 
 export const PopupContext = createContext<any>(()=>{})
@@ -26,6 +27,11 @@ export const PopupProvider = ({ children }: any) => {
         }else{
             setCover("Edit")
         }
+    }
+
+    const getData = async (userId:any) => {
+        const response = await axios.get(`http://localhost:3000/api/tabledata/${userId}`);
+        return response.data;
     }
 
     const addItem = (newItem:any) => {
@@ -58,7 +64,8 @@ export const PopupProvider = ({ children }: any) => {
             editItem,
             setEdit,
             edit,
-            changeEditState
+            changeEditState,
+            getData
             }}> 
             {children}
         </PopupContext.Provider>

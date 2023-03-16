@@ -14,14 +14,20 @@ export default async function addUser(req:any, res:any){
 
     const user = await User.create({email, password: hashedPassword})
     
-    let userId = user._id.toString()!
-    let code: Array<number> = []
-    let nome: Array<string> = []
-    let quantidade: Array<number> = []
-    let valor: Array<number> = []
-    let dataCasdatro: Array<number> = []
+    const userId = user._id;
 
-    let data = await TableData.create({userId, code, nome, quantidade, valor, dataCasdatro})
+    const initialData = [
+        {"codigo":1,"nome":"Item 1","quantidade":10,"value":100,"createDate":"2023-03-13T07:06:29.253Z"},
+        {"codigo":2,"nome":"Item 2","quantidade":20,"value":200,"createDate":"2023-03-13T07:06:29.253Z"},
+        {"codigo":3,"nome":"Item 3","quantidade":30,"value":300,"createDate":"2023-03-13T07:06:29.253Z"},
+        {"codigo":4,"nome":"Item 4","quantidade":40,"value":400,"createDate":"2023-03-13T07:06:29.253Z"},
+        {"codigo":5,"nome":"Item 5","quantidade":50,"value":500,"createDate":"2023-03-13T07:06:29.253Z"}
+    ];
 
-    res.status(201).json({user, data})
+    const data = await TableData.create({
+        userId: userId,
+        data: initialData
+    });
+
+    res.status(201).json({user, data});
 }

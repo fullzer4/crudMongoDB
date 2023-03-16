@@ -1,4 +1,4 @@
-import { Schema, model } from "mongoose";
+import { Schema, model, models } from "mongoose";
 
 const tableDataSchema = new Schema({
   userId: {
@@ -31,6 +31,6 @@ const tableDataSchema = new Schema({
   ],
 });
 
-const TableData = model("TableData", tableDataSchema);
+const TableData = models.TableData || model("TableData", tableDataSchema);
 
 export default TableData;

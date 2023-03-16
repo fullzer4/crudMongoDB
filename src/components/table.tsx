@@ -13,7 +13,7 @@ type Item = {
 export default function Table() {
   const [items, setItems] = useState<Item[]>([]);
 
-  const { data, removeItem, changeEditState } = useContext(PopupContext);
+  const { data, removeItem, changeEditState, getData } = useContext(PopupContext);
 
   useEffect(() => {
     const parsedData = data.map((item: any) => ({
@@ -28,6 +28,8 @@ export default function Table() {
   };
 
   const handleDelete = (codigo: number) => {
+    const id = localStorage.getItem("id")
+    getData(id)
     removeItem(codigo);
   };
 
