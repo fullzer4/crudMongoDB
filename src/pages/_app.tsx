@@ -3,6 +3,7 @@ import "../scss/globals.scss";
 import { PopupProvider } from '../context/popup';
 import { useRouter } from 'next/router';
 import { useEffect } from 'react';
+import { ErrorsProvider } from '../context/errors';
 
 export default function App({ Component, pageProps }: AppProps) {
   const router = useRouter();
@@ -23,7 +24,9 @@ export default function App({ Component, pageProps }: AppProps) {
   return (
     <>
       <PopupProvider>
-        <Component {...pageProps} />
+        <ErrorsProvider>
+          <Component {...pageProps} />
+        </ErrorsProvider>
       </PopupProvider>
     </>
   )

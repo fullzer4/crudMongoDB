@@ -13,7 +13,7 @@ export const PopupProvider = ({ children }: any) => {
             setCover("Cover off")
         }else{
             setCover("Cover")
-        }
+        }   
     }
 
     const changeEditState = () => {
