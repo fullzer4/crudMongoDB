@@ -35,8 +35,9 @@ const Popup = (): JSX.Element => {
   return (
     <div className={cover}>
       <div className="Popup">
-        <div>
-          <p>Produto</p>
+        <div className="Popup-title">
+          <p className="title">Produto</p>
+          <hr />
         </div>
         <form onSubmit={handleSubmit}>
           <div>
@@ -79,7 +80,7 @@ const Popup = (): JSX.Element => {
               required
             />
           </div>
-          <div>
+          <div className="botoes">
             <button type="submit">Adicionar</button>
             <button onClick={() => changePopState()}>Cancelar</button>
           </div>

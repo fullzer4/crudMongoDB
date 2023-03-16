@@ -3,7 +3,7 @@ import { useContext, useState } from "react";
 import Data from "../models/dataClass";
 
 const EditPopup = (): JSX.Element => {
-  const { edit, changeEditState } = useContext(PopupContext); // importando a função addItem
+  const { edit, changeEditState, index } = useContext(PopupContext); // importando a função addItem
   const [code, setCode] = useState("");
   const [product, setProduct] = useState("");
   const [quantity, setQuantity] = useState("");
@@ -23,10 +23,8 @@ const EditPopup = (): JSX.Element => {
       value: parseInt(price),
       createDate: new Date().toISOString(),
     };
-    
-    const position = 0
 
-    data.editData(id, position, newItem)
+    data.editData(id, index, newItem)
 
     setCode("");
     setProduct("");
@@ -37,8 +35,9 @@ const EditPopup = (): JSX.Element => {
   return (
     <div className={edit}>
       <div className="Popup">
-        <div>
-          <p>Produto</p>
+        <div className="Popup-title">
+          <p className="title">Produto</p>
+          <hr/>
         </div>
         <form onSubmit={handleSubmit}>
           <div>
@@ -81,7 +80,7 @@ const EditPopup = (): JSX.Element => {
               required
             />
           </div>
-          <div>
+          <div className="botoes">
             <button type="submit">Editar</button>
             <button onClick={() => changeEditState()}>Cancelar</button>
           </div>

@@ -16,7 +16,7 @@ const data = new Data();
 export default function Table() {
   const [items, setItems] = useState<Item[]>([]);
 
-  const { changeEditState } = useContext(PopupContext);
+  const { changeEditState, setIndex } = useContext(PopupContext);
 
   useEffect(() => {
     const id = localStorage.getItem("id");
@@ -37,11 +37,9 @@ export default function Table() {
   };
 
   const handleEdit = async (position: number) => {
+    setIndex(position)
     changeEditState();
-    // Chama o método editData da classe Data
     const id = localStorage.getItem("id");
-    //const newData = /* obter os novos dados do item editado */;
-    //await data.editData(id, position, newData);
     setItems(data.data);
   };
 

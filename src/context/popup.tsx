@@ -6,6 +6,7 @@ export const PopupProvider = ({ children }: any) => {
 
     const [cover, setCover] = useState("Cover off")
     const [edit, setEdit ] = useState("Edit off")
+    const [index, setIndex] = useState(0)
 
     const changePopState = () => {
         if(cover === "Cover"){
@@ -31,6 +32,8 @@ export const PopupProvider = ({ children }: any) => {
             setEdit,
             edit,
             changeEditState,
+            index,
+            setIndex
             }}> 
             {children}
         </PopupContext.Provider>
