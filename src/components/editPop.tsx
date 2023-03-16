@@ -2,7 +2,7 @@ import { PopupContext } from "../context/popup";
 import { useContext, useState } from "react";
 import Data from "../models/dataClass";
 
-const Popup = (): JSX.Element => {
+const EditPopup = (): JSX.Element => {
   const { edit, changeEditState } = useContext(PopupContext); // importando a função addItem
   const [code, setCode] = useState("");
   const [product, setProduct] = useState("");
@@ -91,4 +91,4 @@ const Popup = (): JSX.Element => {
   );
 };
 
-export default Popup;
+export default EditPopup;

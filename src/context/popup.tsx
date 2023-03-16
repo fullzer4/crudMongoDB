@@ -20,7 +20,7 @@ export const PopupProvider = ({ children }: any) => {
             setEdit("Edit off")
             
         }else{
-            setCover("Edit")
+            setEdit("Edit")
         }
     }   
 
