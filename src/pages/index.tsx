@@ -28,6 +28,8 @@ export default function Login(){
       await localStorage.setItem('token', token);
       await localStorage.setItem('id', id);
       router.push('/dashboard');
+    }else{
+      alert("Verifique os campos")
     }
   };
   
