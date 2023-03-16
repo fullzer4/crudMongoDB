@@ -1,8 +1,19 @@
-import connect from "../../../utils/mongo"
+import connect from "../../../utils/mongo";
+import TableData from "../../../models/dataModel";
 
-export default async function addData(req:any, res:any){
+export default async function addTableData(req:any, res:any) {
+  const { id, item } = req.body;
 
-    const { userID, codigo, nome, quantidade, value, createDate } = req.body
+  await connect();
 
-    await connect()
+  const tableData = await TableData.findOne({ userId: id });
+
+  if (!tableData) {
+    return res.status(404).json({ message: "Table data not found" });
+  }
+
+  tableData.data.push(item);
+  await tableData.save();
+
+  res.status(200).json(tableData);
 }
