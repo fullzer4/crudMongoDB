@@ -1,8 +1,9 @@
 import { PopupContext } from "../context/popup"; 
 import { useContext, useState } from "react";
+import Data from "../models/dataClass";
 
 const Popup = (): JSX.Element => {
-  const { edit, changeEditState, addItem } = useContext(PopupContext); // importando a função addItem
+  const { edit, changeEditState } = useContext(PopupContext); // importando a função addItem
   const [code, setCode] = useState("");
   const [product, setProduct] = useState("");
   const [quantity, setQuantity] = useState("");
@@ -11,6 +12,10 @@ const Popup = (): JSX.Element => {
   const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
 
+    const data = new Data()
+    
+    const id = localStorage.getItem("id");
+
     const newItem = {
       codigo: parseInt(code),
       nome: product,
@@ -18,8 +23,10 @@ const Popup = (): JSX.Element => {
       value: parseInt(price),
       createDate: new Date().toISOString(),
     };
+    
+    const position = 0
 
-    addItem(newItem);
+    data.editData(id, position,newItem)
 
     setCode("");
     setProduct("");
@@ -75,7 +82,7 @@ const Popup = (): JSX.Element => {
             />
           </div>
           <div>
-            <button type="submit">Adicionar</button>
+            <button type="submit">Editar</button>
             <button onClick={() => changeEditState()}>Cancelar</button>
           </div>
         </form>

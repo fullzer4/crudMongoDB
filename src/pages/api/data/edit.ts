@@ -17,16 +17,22 @@ export default async function editTableData(req:any, res:any) {
   const data = tableData.data;
   const objectToUpdate = data[position];
 
+  console.log(objectToUpdate);
+
   if (!objectToUpdate) {
     return res.status(404).json({ message: "Object not found" });
   }
 
-  const updatedObject = Object.assign(objectToUpdate, newData);
+  const updatedData = [...data];
+    updatedData[position] = {
+      ...objectToUpdate,
+      ...newData
+  };
 
   await TableData.findOneAndUpdate(
     { userId },
-    { data: [...data.slice(0, position), updatedObject, ...data.slice(position + 1)] }
+    { data: updatedData }
   );
 
-  res.status(200).json({ message: "Object updated successfully" });
+  res.status(200).json({ message: "Object updated successfully", objectToUpdate });
 }
